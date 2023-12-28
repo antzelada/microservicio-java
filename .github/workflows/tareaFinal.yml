@@ -31,9 +31,9 @@ jobs:
       uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
       with:
         arguments: build
-    - name: Run a multi-line script
+    - name: Convert to non-shallow clone
       run: |
-          echo "hola mundo"
+          git fetch --unshallow
     - name: Analisis sonarcloud
       run: |
         ./gradlew build sonar -Dsonar.token=${{ secrets.TOKENSONARCLOUDTAREAFINAL }}
