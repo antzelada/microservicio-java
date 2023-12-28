@@ -7,7 +7,7 @@ plugins {
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = '1.8'
 
 repositories {
@@ -30,6 +30,8 @@ sonar {
 
 test {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+	finalizedBy jacocoTestCoverageVerification
 }
 
 jacoco {
@@ -39,8 +41,16 @@ jacoco {
 jacocoTestReport {
     dependsOn test
 	  reports {
-        xml.required = true
-        csv.required = false
-        html.outputLocation = layout.buildDirectory.dir('jacocoHtml')
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.85  // Cambia este valor según tu requisito de cobertura
+            }
+        }
     }
 }
