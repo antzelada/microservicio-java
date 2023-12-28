@@ -54,8 +54,8 @@ jobs:
 
     - name: Copia de Jar a Raiz de proyecto
       run: |
-          cp $GITHUB_WORKSPACE/build/libs/spring-petclinic-2.6.0.jar .
-          chmod 777 spring-petclinic-2.6.0.jar
+          cp $GITHUB_WORKSPACE/build/libs/testing-web-0.0.1-.jar .
+          chmod 777 testing-web-0.0.1-.jar
           ls -lt 
       
     - name: Docker Build
