@@ -24,13 +24,10 @@ jobs:
       with:
         java-version: '11'
         distribution: 'temurin'
-    - name: permisos de ejecución a gradlew
+    - name: Build
       run: |
           chmod +x gradlew
-    - name: Build with Gradle
-      uses: gradle/gradle-build-action@bd5760595778326ba7f1441bcf7e88b49de61a25 # v2.6.0
-      with:
-        arguments: build
+          ./gradlew build
     - name: Run Tests
       run: ./gradlew test
     - name: Convert to non-shallow clone
