@@ -33,3 +33,12 @@ jobs:
     - name: Run a multi-line script
       run: |
           echo "hola mundo"
+  test:
+
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - name: analisis sonarcloud
+      run: |
+        ./gradlew build sonar -Dsonar.token=${{ secrets.TOKENSONARCLOUDTAREAFINAL }}
+      
