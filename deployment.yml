@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microserviciojava-deployment
+  labels:
+    app: microserviciojava
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microserviciojava
+  template:
+    metadata:
+      labels:
+        app: microserviciojava
+    spec:
+      containers:
+        - name: microserviciojava
+          image: pimpo7/microserviciojava:latest
+          ports:
+            - containerPort: 8085
+            
