@@ -9,6 +9,7 @@ name: CI tarea final
 
 on:
   push:
+    branches: [ "feature-ms-antonioZelada-mensaje" ]
   workflow_dispatch:
 
 jobs:
