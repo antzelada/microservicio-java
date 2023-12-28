@@ -10,8 +10,6 @@ name: CI tarea final
 on:
   push:
     branches: [ "feature-ms-antonioZelada-mensaje" ]
-permissions:
-  contents: read
 
 jobs:
   build:
