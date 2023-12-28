@@ -30,6 +30,8 @@ jobs:
           ./gradlew build
     - name: Run Tests
       run: ./gradlew test
+    - name: Run Tests jacoco
+      run: ./gradlew jacocoTestReport
     - name: Convert to non-shallow clone
       run: |
           git fetch --unshallow
