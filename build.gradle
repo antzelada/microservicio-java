@@ -3,10 +3,11 @@ plugins {
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
 	id "org.sonarqube" version "4.2.1.3168"
+	id "jacoco"
 }
 
 group = 'com.example'
-version = '0.0.1-SNAPSHOT'
+version = '0.0.1'
 sourceCompatibility = '1.8'
 
 repositories {
@@ -29,4 +30,27 @@ sonar {
 
 test {
 	useJUnitPlatform()
+	finalizedBy jacocoTestReport
+	finalizedBy jacocoTestCoverageVerification
+}
+
+jacoco {
+    toolVersion = "0.8.7"
+}
+
+jacocoTestReport {
+    dependsOn test
+	  reports {
+        xml.enabled = true
+        html.enabled = true
+    }
+}
+jacocoTestCoverageVerification {
+    violationRules {
+        rule {
+            limit {
+                minimum = 0.70  // Cambia este valor según tu requisito de cobertura
+            }
+        }
+    }
 }

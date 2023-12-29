@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microserviciojava-deployment
+  labels:
+    app: microserviciojava
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microserviciojava
+  template:
+    metadata:
+      labels:
+        app: microserviciojava
+    spec:
+      containers:
+        - name: microserviciojava
+          image: azelada/microserviciojava:latest
+          ports:
+            - containerPort: 8085
+    apiVersion: v1
+kind: Service
+metadata:
+  name: microserviciojava-service
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: microserviciojava
+  type: LoadBalancer
+            
