@@ -78,7 +78,7 @@ jobs:
       run: |
         kubectl apply -f deployment.yml
   test:
-    runs-on: self-hosted
+    runs-on: ubuntu-latest
     needs: deploy
     name: Execute JMeter test
     steps:
