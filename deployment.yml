@@ -16,10 +16,10 @@ spec:
     spec:
       containers:
         - name: microserviciojava
-          image: azelada/microserviciojava:latest
+          image: pimpo7/microserviciojava:latest
           ports:
             - containerPort: 8085
-    apiVersion: v1
+apiVersion: v1
 kind: Service
 metadata:
   name: microserviciojava-service
