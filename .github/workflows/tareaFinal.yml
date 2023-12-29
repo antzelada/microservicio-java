@@ -92,7 +92,7 @@ jobs:
           environment: tareaFinal.postman_environment.json
 
   testJmeter:
-    runs-on: ubuntu-latest
+    runs-on: self-hosted
     needs: testPostman
     name: JMeter test
     steps:
