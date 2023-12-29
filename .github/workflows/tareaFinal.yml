@@ -77,5 +77,30 @@ jobs:
     - name: Deploy to Minikube
       run: |
         kubectl apply -f deployment.yml
-
+  test:
+    runs-on: self-hosted
+    name: Execute JMeter test
+    steps:
+      - name: Create reports directory
+        run: mkdir reports
+    
+      - name: Executing Test
+        uses: QAInsights/PerfAction@v5.6.2
+        with:
+          test-plan-path: planPruebaTareaFinal.jmx
+          args: "-e -o ./reports/html/"
+        
+      - name: Upload Results
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-results
+          path: result.jtl
+          if-no-files-found: error
+    
+      - name: Upload HTML Reports
+        uses: actions/upload-artifact@v3
+        with:
+          name: jmeter-html-reports
+          path: reports
+          if-no-files-found: error
       
