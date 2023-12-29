@@ -79,6 +79,7 @@ jobs:
         kubectl apply -f deployment.yml
   test:
     runs-on: self-hosted
+    needs: deploy
     name: Execute JMeter test
     steps:
       - name: Create reports directory
