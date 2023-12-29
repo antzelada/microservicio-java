@@ -16,7 +16,18 @@ spec:
     spec:
       containers:
         - name: microserviciojava
-          image: pimpo7/microserviciojava:latest
+          image: azelada/microserviciojava:latest
           ports:
             - containerPort: 8085
+    apiVersion: apps/v1
+kind: Service
+metadata:
+  name: microserviciojava-service
+spec:
+  ports:
+  - port: 8080
+    targetPort: 8080
+  selector:
+    app: microserviciojava
+  type: LoadBalancer
             
